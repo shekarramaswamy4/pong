@@ -36,6 +36,9 @@ let BlockCategory  : UInt32 = 0x1 << 2
 let PaddleCategory : UInt32 = 0x1 << 3
 let BorderCategory : UInt32 = 0x1 << 4
 
+//initialize actual game over sound here
+let gameOverSound = SKAction.playSoundFileNamed("game-over", waitForCompletion: false)
+
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
@@ -46,6 +49,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var gameWon : Bool = false {
         didSet {
+            //where game over sound is played
+            run(gameOverSound)
             let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
             let textureName = gameWon ? "YouWon" : "GameOver"
             let texture = SKTexture(imageNamed: textureName)
@@ -104,6 +109,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     gameMessage.zPosition = 4
     gameMessage.setScale(0.0)
     addChild(gameMessage)
+    
+    //put background music here
+//    let backgroundMusic = SKAudioNode(fileNamed: "background.wav")
+//    backgroundMusic.autoplayLooped = true
+//    self.addChild(backgroundMusic)
     
     gameState.enter(WaitingForTap.self)
   }

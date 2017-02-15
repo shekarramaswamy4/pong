@@ -28,8 +28,7 @@ class Playing: GKState {
         for ball in scene.children {
             if ball.name == BallCategoryName {
                 
-                //let ball = scene.childNode(withName: BallCategoryName) as! SKSpriteNode
-                let maxSpeed: CGFloat = 400.0
+                let maxSpeed: CGFloat = 300.0
                 
                 let xSpeed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx)
                 let ySpeed = sqrt(ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
@@ -44,7 +43,7 @@ class Playing: GKState {
                 }
                 
                 if speed > maxSpeed {
-                    ball.physicsBody!.linearDamping = 0.4
+                    ball.physicsBody!.linearDamping = 0.2
                 } else {
                     ball.physicsBody!.linearDamping = 0.0
                 }
