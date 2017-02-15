@@ -118,11 +118,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let touchLocation = touch.location(in: self)
                 let node = atPoint(touchLocation)
                 if let name = node.name {
-                    if name == "leftClicker" {
+                    if name == "leftClicker" || name == "paddleL" {
                         print("Began touch on paddleL")
                         touchTracker[touch] = name
                     }
-                    else if name == "rightClicker" {
+                    else if name == "rightClicker" || name == "paddleR" {
                         print("Began touch on paddleR")
                         touchTracker[touch] = name
                     }
@@ -144,12 +144,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let touchLocation = touch.location(in: self)
             let previousLocation = touch.previousLocation(in: self)
             var name:String = ""
-            if touchTracker[touch] == "leftClicker" {
+            if touchTracker[touch] == "leftClicker" || touchTracker[touch] == "paddleL" {
                 name = "paddleL"
             }
-            else {
+            else if touchTracker[touch] == "rightClicker" || touchTracker[touch] == "paddleR"{
                 name = "paddleR"
             }
+            if (name != "") {
             
             if let paddle = childNode(withName: name) as? SKSpriteNode {
                 
@@ -161,6 +162,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 paddle.position = CGPoint(x: paddle.position.x, y: paddleY)
                 
                 paddle.position = CGPoint(x:paddle.position.x, y:touchLocation.y)
+                }
                 
             }
         }
@@ -190,7 +192,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == WallCategory {
-                print("Contact has been made.")
+                //print("Contact has been made.")
                 gameState.enter(GameOver.self)
                 gameWon = false
                 
@@ -203,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scoreboard.text = String(describing: current!)
                 
                 //could change later
-                if (current == 2 || current == 8)
+                if (current == 2 || current == 8 || current == 20)
                 {
                     let curBall = childNode(withName: BallCategoryName) as! SKSpriteNode
                     let ball = curBall.copy() as! SKSpriteNode
