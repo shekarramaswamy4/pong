@@ -25,25 +25,30 @@ class Playing: GKState {
     }
     
     override func update(deltaTime seconds: TimeInterval) {
-        let ball = scene.childNode(withName: BallCategoryName) as! SKSpriteNode
-        let maxSpeed: CGFloat = 400.0
-        
-        let xSpeed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx)
-        let ySpeed = sqrt(ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
-        
-        let speed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx + ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
-        
-        if xSpeed <= 10.0 {
-            ball.physicsBody!.applyImpulse(CGVector(dx: randomDirection(), dy: 0.0))
-        }
-        if ySpeed <= 10.0 {
-            ball.physicsBody!.applyImpulse(CGVector(dx: 0.0, dy: randomDirection()))
-        }
-        
-        if speed > maxSpeed {
-            ball.physicsBody!.linearDamping = 0.4
-        } else {
-            ball.physicsBody!.linearDamping = 0.0
+        for ball in scene.children {
+            if ball.name == BallCategoryName {
+                
+                //let ball = scene.childNode(withName: BallCategoryName) as! SKSpriteNode
+                let maxSpeed: CGFloat = 400.0
+                
+                let xSpeed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx)
+                let ySpeed = sqrt(ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
+                
+                let speed = sqrt(ball.physicsBody!.velocity.dx * ball.physicsBody!.velocity.dx + ball.physicsBody!.velocity.dy * ball.physicsBody!.velocity.dy)
+                
+                if xSpeed <= 10.0 {
+                    ball.physicsBody!.applyImpulse(CGVector(dx: randomDirection(), dy: 0.0))
+                }
+                if ySpeed <= 10.0 {
+                    ball.physicsBody!.applyImpulse(CGVector(dx: 0.0, dy: randomDirection()))
+                }
+                
+                if speed > maxSpeed {
+                    ball.physicsBody!.linearDamping = 0.4
+                } else {
+                    ball.physicsBody!.linearDamping = 0.0
+                }
+            }
         }
     }
     

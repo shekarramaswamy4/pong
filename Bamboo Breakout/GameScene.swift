@@ -205,7 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scoreboard.text = String(describing: current!)
                 
                 //could change later
-                if (current == 2 || current == 8 || current == 20)
+                if (current == 2 || current == 10 || current == 20)
                 {
                     let curBall = childNode(withName: BallCategoryName) as! SKSpriteNode
                     let ball = curBall.copy() as! SKSpriteNode
