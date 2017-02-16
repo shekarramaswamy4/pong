@@ -37,7 +37,7 @@ let PaddleCategory : UInt32 = 0x1 << 3
 let BorderCategory : UInt32 = 0x1 << 4
 
 //initialize actual game over sound here
-let gameOverSound = SKAction.playSoundFileNamed("game-over", waitForCompletion: false)
+let gameOverSound = SKAction.playSoundFileNamed("gameover", waitForCompletion: false)
 
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -58,13 +58,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             var textureName:String = ""
             
             //change medal sets later
-            if (score < 10) {
+            if (score < 15) {
                 textureName = "GameOver"
             }
-            else if (score < 15) {
+            else if (score < 25) {
                 textureName = "GameOverBronze"
             }
-            else if (score < 20) {
+            else if (score < 40) {
                 textureName = "GameOverSilver"
             }
             else {
