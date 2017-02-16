@@ -136,6 +136,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     backgroundMusic.autoplayLooped = true
     self.addChild(backgroundMusic)
     
+    let skView = self.view! as SKView
+    skView.showsFPS = false
+    skView.showsNodeCount = false
+    
     gameState.enter(WaitingForTap.self)
   }
     
