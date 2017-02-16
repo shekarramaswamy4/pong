@@ -47,17 +47,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         Playing(scene: self),
         GameOver(scene: self)])
     
+    var score:Int = 0
+    
     var gameWon : Bool = false {
         didSet {
             //where game over sound is played
             run(gameOverSound)
             let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
-            let textureName = gameWon ? "YouWon" : "GameOver"
+            var textureName:String = ""
+            if (score < 10) {
+                textureName = "GameOver"
+            }
+            else if (score < 20) {
+                textureName = "GameOverBronze"
+            }
+            else if (score < 35) {
+                textureName = "GameOverSilver"
+            }
+            else {
+                textureName = "GameOverGold"
+            }
             let texture = SKTexture(imageNamed: textureName)
             let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
-                                                    SKAction.scale(to: 1.0, duration: 0.25)])
+                                                    SKAction.scale(to: 1.75, duration: 0.25)])
+            
             
             gameOver.run(actionSequence)
+
         }
     }
     
@@ -202,7 +218,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == WallCategory {
-                //print("Contact has been made.")
+                let scoreboard = childNode(withName: "scoreboard") as! SKLabelNode
+                let current = Int(scoreboard.text!)
+                score = current!
                 gameState.enter(GameOver.self)
                 gameWon = false
                 
@@ -222,6 +240,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ball.physicsBody?.restitution = 1
                     ball.physicsBody?.linearDamping = 0
                     ball.physicsBody?.linearDamping = 0
+                    ball.physicsBody?.velocity = CGVector(dx: (ball.physicsBody?.velocity.dx.multiplied(by: -1.0))!, dy: (ball.physicsBody?.velocity.dy)!)
                     ball.position = CGPoint(x: frame.midX, y: frame.midY)
                     self.addChild(ball)
                 }
