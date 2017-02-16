@@ -48,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         GameOver(scene: self)])
     
     var score:Int = 0
+    var highestScore:Int = 0
     
     var gameWon : Bool = false {
         didSet {
@@ -83,7 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var isFingerOnPaddleL = false
     var isFingerOnPaddleR = false
     var touchTracker:[UITouch:String] = [:]
-  
+    
   override func didMove(to view: SKView) {
     super.didMove(to: view)
     
@@ -99,6 +100,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let scoreboard = childNode(withName: "scoreboard") as! SKLabelNode
     scoreboard.text = "0"
+    
+    let highscore = childNode(withName: "highscore") as! SKLabelNode
+    var savedScore:Int = 0
+    
+    //remove later
+    UserDefaults.standard.set(44, forKey: "HighestScore")
+    
+    savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+
+    highscore.text = String(savedScore)
+    
+    
     
     let paddleL = childNode(withName: "paddleL") as! SKSpriteNode
     let paddleR = childNode(withName: "paddleR") as! SKSpriteNode
@@ -230,6 +243,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let scoreboard = childNode(withName: "scoreboard") as! SKLabelNode
                 let current = Int(scoreboard.text!)
                 score = current!
+                
+                let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+                if (current! > savedScore) {
+                    UserDefaults.standard.set(current!, forKey: "HighestScore")
+                }
+
                 gameState.enter(GameOver.self)
                 gameWon = false
                 
