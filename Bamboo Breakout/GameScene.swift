@@ -53,15 +53,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         didSet {
             //where game over sound is played
             run(gameOverSound)
+            
             let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
             var textureName:String = ""
+            
+            //change medal sets later
             if (score < 10) {
                 textureName = "GameOver"
             }
-            else if (score < 20) {
+            else if (score < 15) {
                 textureName = "GameOverBronze"
             }
-            else if (score < 35) {
+            else if (score < 20) {
                 textureName = "GameOverSilver"
             }
             else {
@@ -127,9 +130,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     addChild(gameMessage)
     
     //put background music here
-//    let backgroundMusic = SKAudioNode(fileNamed: "background.wav")
-//    backgroundMusic.autoplayLooped = true
-//    self.addChild(backgroundMusic)
+    let randomNum:UInt32 = arc4random_uniform(10) + 1
+    let audioName = "Beat" + String(randomNum) + ".mp3"
+    let backgroundMusic = SKAudioNode(fileNamed: audioName)
+    backgroundMusic.autoplayLooped = true
+    self.addChild(backgroundMusic)
     
     gameState.enter(WaitingForTap.self)
   }
