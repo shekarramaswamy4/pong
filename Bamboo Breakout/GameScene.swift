@@ -103,10 +103,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let highscore = childNode(withName: "highscore") as! SKLabelNode
     var savedScore:Int = 0
-    
-    //remove later
-    UserDefaults.standard.set(44, forKey: "HighestScore")
-    
+    UserDefaults.standard.register(defaults: ["HighestScore": 0])
     savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
 
     highscore.text = String(savedScore)
