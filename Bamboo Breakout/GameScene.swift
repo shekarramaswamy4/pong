@@ -58,7 +58,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
             var textureName:String = ""
             
-            //change medal sets later
+            //change medal sets later: 15, 25, 40
             if (score < 15) {
                 textureName = "GameOver"
             }
