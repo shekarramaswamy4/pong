@@ -88,6 +88,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                                                         SKAction.scale(to: 1.75, duration: 0.20)])
             }
             
+            let shareicon = childNode(withName: "shareicon") as! SKSpriteNode
+            shareicon.zPosition = 5
+            
             gameOver.run(actionSequence)
             
         }
@@ -122,6 +125,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let shareHighscore = childNode(withName: "shareHighscore") as! SKLabelNode
     shareHighscore.zPosition = -1
+    
+    let shareicon = childNode(withName: "shareicon") as! SKSpriteNode
+    shareicon.zPosition = -1
     
     let paddleL = childNode(withName: "paddleL") as! SKSpriteNode
     let paddleR = childNode(withName: "paddleR") as! SKSpriteNode
@@ -169,6 +175,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch gameState.currentState {
         case is WaitingForTap:
+            
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            
+            if let body = physicsWorld.body(at: touchLocation)
+            {
+                if (body.node!.name == "shareicon") {
+                    print("touched")
+                }
+            }
+            
             gameState.enter(Playing.self)
             
         case is Playing:
@@ -188,6 +205,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
             
         case is GameOver:
+            let touch = touches.first
+            let touchLocation = touch!.location(in: self)
+            
+            if let body = physicsWorld.body(at: touchLocation)
+            {
+                if (body.node!.name == "shareicon") {
+                    print("touched")
+                }
+            }
+            
             let newScene = GameScene(fileNamed:"GameScene")
             newScene!.scaleMode = .aspectFit
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
