@@ -39,7 +39,6 @@ let BorderCategory : UInt32 = 0x1 << 4
 //initialize actual game over sound here
 let gameOverSound = SKAction.playSoundFileNamed("gameover", waitForCompletion: false)
 
-
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
     lazy var gameState: GKStateMachine = GKStateMachine(states: [
@@ -49,6 +48,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var score:Int = 0
     var highestScore:Int = 0
+    var isHighscore:Bool = false
     
     var gameWon : Bool = false {
         didSet {
@@ -72,10 +72,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 textureName = "GameOverGold"
             }
             let texture = SKTexture(imageNamed: textureName)
-            let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
-                                                    SKAction.scale(to: 1.75, duration: 0.25)])
+            
+            var actionSequence:SKAction
+            if (isHighscore && score > 9) {
+                let shareHighscore = childNode(withName: "shareHighscore") as! SKLabelNode
+                actionSequence = SKAction.sequence([SKAction.setTexture(texture),
+                                                        SKAction.scale(to: 1.75, duration: 0.20),
+                                                        SKAction.wait(forDuration: 0.00),
+                                                        SKAction.run {
+                                                            shareHighscore.zPosition = 3
+                                                        }])
+            }
+            else {
+                actionSequence = SKAction.sequence([SKAction.setTexture(texture),
+                                                        SKAction.scale(to: 1.75, duration: 0.20)])
+            }
+            
             gameOver.run(actionSequence)
-
+            
         }
     }
     
@@ -106,7 +120,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     highscore.text = String(savedScore)
     
-    
+    let shareHighscore = childNode(withName: "shareHighscore") as! SKLabelNode
+    shareHighscore.zPosition = -1
     
     let paddleL = childNode(withName: "paddleL") as! SKSpriteNode
     let paddleR = childNode(withName: "paddleR") as! SKSpriteNode
@@ -242,8 +257,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
                 if (current! > savedScore) {
                     UserDefaults.standard.set(current!, forKey: "HighestScore")
+                    //share highscore logic
                 }
-
+                
+                isHighscore = true
+                
                 gameState.enter(GameOver.self)
                 gameWon = false
             }
