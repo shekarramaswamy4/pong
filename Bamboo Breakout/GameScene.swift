@@ -207,13 +207,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case is GameOver:
             let touch = touches.first
             let touchLocation = touch!.location(in: self)
+            let node = atPoint(touchLocation)
             
-            if let body = physicsWorld.body(at: touchLocation)
+            if let name = node.name
             {
-                if (body.node!.name == "shareicon") {
+                if (name == "shareicon") {
                     print("touched")
                 }
             }
+            print("here")
             
             let newScene = GameScene(fileNamed:"GameScene")
             newScene!.scaleMode = .aspectFit
