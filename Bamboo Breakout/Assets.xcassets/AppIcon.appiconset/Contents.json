@@ -37,13 +37,13 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon_60@2x.png",
+      "filename" : "background120.png",
       "scale" : "2x"
     },
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "Icon_60@3x.png",
+      "filename" : "background180.png",
       "scale" : "3x"
     },
     {

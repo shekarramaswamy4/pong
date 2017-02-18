@@ -74,8 +74,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let texture = SKTexture(imageNamed: textureName)
             let actionSequence = SKAction.sequence([SKAction.setTexture(texture),
                                                     SKAction.scale(to: 1.75, duration: 0.25)])
-            
-            
             gameOver.run(actionSequence)
 
         }
@@ -248,7 +246,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
                 gameState.enter(GameOver.self)
                 gameWon = false
-                
             }
             
             if firstBody.categoryBitMask == BallCategory && secondBody.categoryBitMask == PaddleCategory {
