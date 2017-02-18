@@ -32,8 +32,6 @@
 		F577B3B91CB8210A0005E827 /* paddleBlip.wav in Resources */ = {isa = PBXBuildFile; fileRef = F577B3B41CB8210A0005E827 /* paddleBlip.wav */; };
 		F577B3BA1CB8210A0005E827 /* pongblip.wav in Resources */ = {isa = PBXBuildFile; fileRef = F577B3B51CB8210A0005E827 /* pongblip.wav */; };
 		F597B1221CC1B1F000D398E0 /* BambooBreak.wav in Resources */ = {isa = PBXBuildFile; fileRef = F597B1211CC1B1F000D398E0 /* BambooBreak.wav */; };
-		F5B9A21F1CC1392A000D5BC7 /* BallTrail.sks in Resources */ = {isa = PBXBuildFile; fileRef = F5B9A21D1CC1392A000D5BC7 /* BallTrail.sks */; };
-		F5B9A2201CC1392A000D5BC7 /* BrokenPlatform.sks in Resources */ = {isa = PBXBuildFile; fileRef = F5B9A21E1CC1392A000D5BC7 /* BrokenPlatform.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,8 +62,6 @@
 		F577B3B41CB8210A0005E827 /* paddleBlip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = paddleBlip.wav; sourceTree = "<group>"; };
 		F577B3B51CB8210A0005E827 /* pongblip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pongblip.wav; sourceTree = "<group>"; };
 		F597B1211CC1B1F000D398E0 /* BambooBreak.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BambooBreak.wav; sourceTree = "<group>"; };
-		F5B9A21D1CC1392A000D5BC7 /* BallTrail.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BallTrail.sks; sourceTree = "<group>"; };
-		F5B9A21E1CC1392A000D5BC7 /* BrokenPlatform.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BrokenPlatform.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +102,6 @@
 				F577B3961CB81F840005E827 /* Main.storyboard */,
 				F577B3991CB81F840005E827 /* Assets.xcassets */,
 				F577B39B1CB81F840005E827 /* LaunchScreen.storyboard */,
-				F577B3AB1CB820F60005E827 /* Particles */,
 				F577B3B01CB8210A0005E827 /* Sounds */,
 				F577B39E1CB81F840005E827 /* Info.plist */,
 			);
@@ -122,15 +117,6 @@
 				F577B3A41CB8208A0005E827 /* GameOver.swift */,
 			);
 			name = "Game States";
-			sourceTree = "<group>";
-		};
-		F577B3AB1CB820F60005E827 /* Particles */ = {
-			isa = PBXGroup;
-			children = (
-				F5B9A21D1CC1392A000D5BC7 /* BallTrail.sks */,
-				F5B9A21E1CC1392A000D5BC7 /* BrokenPlatform.sks */,
-			);
-			path = Particles;
 			sourceTree = "<group>";
 		};
 		F577B3B01CB8210A0005E827 /* Sounds */ = {
@@ -218,7 +204,6 @@
 				D0DDC3CE1E554E3000F0F03A /* Beat7.mp3 in Resources */,
 				D0DDC3D11E554E3000F0F03A /* Beat10.mp3 in Resources */,
 				F577B3911CB81F840005E827 /* GameScene.sks in Resources */,
-				F5B9A21F1CC1392A000D5BC7 /* BallTrail.sks in Resources */,
 				F577B3BA1CB8210A0005E827 /* pongblip.wav in Resources */,
 				D0DDC3CA1E554E3000F0F03A /* Beat3.mp3 in Resources */,
 				F577B3B81CB8210A0005E827 /* game-won.mp3 in Resources */,
@@ -228,7 +213,6 @@
 				F577B39D1CB81F840005E827 /* LaunchScreen.storyboard in Resources */,
 				F577B39A1CB81F840005E827 /* Assets.xcassets in Resources */,
 				D0DDC3C91E554E3000F0F03A /* Beat2.mp3 in Resources */,
-				F5B9A2201CC1392A000D5BC7 /* BrokenPlatform.sks in Resources */,
 				F577B3B91CB8210A0005E827 /* paddleBlip.wav in Resources */,
 				D03FFCB41E55578200A94C56 /* gameover.wav in Resources */,
 				D0DDC3D01E554E3000F0F03A /* Beat9.mp3 in Resources */,

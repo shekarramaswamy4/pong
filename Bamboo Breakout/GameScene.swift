@@ -172,19 +172,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     gameState.enter(WaitingForTap.self)
   }
     
+//    func shareIconTouched()
+//    {
+//        let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+//        
+//        //add app store link
+//        let textToShare = "My highscore on Panda Pong is \(savedScore)! Can you beat that? Download the game here: www.test.com #PandaPong"
+//        
+//        let objectsToShare = [textToShare]
+//        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+//        
+//        var vc: UIViewController = UIViewController()
+//        vc = self.view!.window!.rootViewController!
+//        
+//        vc.present(activityVC, animated:true, completion:nil)
+//    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch gameState.currentState {
         case is WaitingForTap:
-            
-            let touch = touches.first
-            let touchLocation = touch!.location(in: self)
-            
-            if let body = physicsWorld.body(at: touchLocation)
-            {
-                if (body.node!.name == "shareicon") {
-                    print("touched")
-                }
-            }
             
             gameState.enter(Playing.self)
             
@@ -213,14 +221,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 if (name == "shareicon") {
                     print("touched")
+                    let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+                    
+                    //add app store link
+                    let textToShare = "My highscore on Panda Pong is \(savedScore)! Can you beat that? Download the game here: www.test.com #PandaPong"
+                    
+                    let objectsToShare = [textToShare]
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                    activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                    
+                    var vc: UIViewController = UIViewController()
+                    vc = self.view!.window!.rootViewController!
+                    
+                    vc.present(activityVC, animated:true, completion: nil)
                 }
             }
-            print("here")
-            
+
             let newScene = GameScene(fileNamed:"GameScene")
             newScene!.scaleMode = .aspectFit
             let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
             self.view?.presentScene(newScene!, transition: reveal)
+            
+            print("here")
         
         default: break
         }
@@ -286,10 +308,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
                 if (current! > savedScore) {
                     UserDefaults.standard.set(current!, forKey: "HighestScore")
-                    //share highscore logic
+                    isHighscore = true
                 }
-                
-                isHighscore = true
                 
                 gameState.enter(GameOver.self)
                 gameWon = false
