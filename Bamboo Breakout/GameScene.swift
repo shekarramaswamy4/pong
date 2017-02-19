@@ -231,8 +231,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
                     
                     //var vc: UIViewController = UIViewController()
-                    let vc = self.view!.window!.rootViewController!
-                    
+                    let vc = self.view!.window!.rootViewController!                    
                     vc.present(activityVC, animated:true, completion: nil)
                 }
             }
