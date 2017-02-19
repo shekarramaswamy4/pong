@@ -232,7 +232,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     
                     //var vc: UIViewController = UIViewController()
                     let vc = self.view!.window!.rootViewController!                    
-                    vc.present(activityVC, animated:true, completion: nil)
+                    vc.present(activityVC, animated:true, completion: nil) 
                 }
             }
             
