@@ -74,7 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let texture = SKTexture(imageNamed: textureName)
             
             var actionSequence:SKAction
-            if (isHighscore && score > 9) {
+            if (isHighscore && score > 3) {
                 let shareHighscore = childNode(withName: "shareHighscore") as! SKLabelNode
                 actionSequence = SKAction.sequence([SKAction.setTexture(texture),
                                                         SKAction.scale(to: 1.75, duration: 0.20),
@@ -229,14 +229,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let objectsToShare = [textToShare]
                     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                     activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                    activityVC.completionWithItemsHandler = { (activityType, completed, items, error) in
+                        
+                        guard completed else { print("User cancelled."); return }
+                        
+                        print("Completed With Activity Type: \(activityType)")
+                        
+                        if activityType == UIActivityType.postToFacebook {
+                            print("Shared on Facebook")
+                        }
+                        self.resetScene()
+                    }
                     
                     //var vc: UIViewController = UIViewController()
                     let vc = self.view!.window!.rootViewController!                    
                     vc.present(activityVC, animated:true, completion: nil) 
                 }
             }
-            
-            self.resetScene()
+            else {
+                self.resetScene()
+            }
 
 
         default: break
