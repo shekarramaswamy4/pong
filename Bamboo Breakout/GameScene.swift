@@ -216,39 +216,38 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let touch = touches.first
             let touchLocation = touch!.location(in: self)
             let node = atPoint(touchLocation)
+            let name = node.name
             
-            if let name = node.name
+            if (name == "shareicon")
             {
-                if (name == "shareicon") {
-                    print("touched")
-                    let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+                print("touched")
+                let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+                
+                //add app store link
+                let textToShare = "My highscore on Panda Pong is \(savedScore)! Can you beat that? Download the game here: www.test.com #PandaPong"
+                
+                let objectsToShare = [textToShare]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+                activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+                activityVC.completionWithItemsHandler = { (activityType, completed, items, error) in
                     
-                    //add app store link
-                    let textToShare = "My highscore on Panda Pong is \(savedScore)! Can you beat that? Download the game here: www.test.com #PandaPong"
-                    
-                    let objectsToShare = [textToShare]
-                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-                    activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
-                    activityVC.completionWithItemsHandler = { (activityType, completed, items, error) in
-                        
-                        guard completed else {
-                            print("User cancelled.");
-                            self.resetScene()
-                            return
-                        }
-                        
-                        print("Completed With Activity Type: \(activityType)")
-                        
-                        if activityType == UIActivityType.postToFacebook {
-                            print("Shared on Facebook")
-                        }
+                    guard completed else {
+                        print("User cancelled.");
                         self.resetScene()
+                        return
                     }
                     
-                    //var vc: UIViewController = UIViewController()
-                    let vc = self.view!.window!.rootViewController!                    
-                    vc.present(activityVC, animated:true, completion: nil) 
+                    print("Completed With Activity Type: \(activityType)")
+                    
+                    if activityType == UIActivityType.postToFacebook {
+                        print("Shared on Facebook")
+                    }
+                    self.resetScene()
                 }
+                
+                //var vc: UIViewController = UIViewController()
+                let vc = self.view!.window!.rootViewController!
+                vc.present(activityVC, animated:true, completion: nil)
             }
             else {
                 self.resetScene()
