@@ -11,9 +11,9 @@
 		D02AD9A11E5A235400F6B9D2 /* Beat7.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D02AD9A31E5A235400F6B9D2 /* Beat7.mp3 */; };
 		D02AD9A41E5A235900F6B9D2 /* Beat9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D02AD9A61E5A235900F6B9D2 /* Beat9.mp3 */; };
 		D02AD9A91E5A23D500F6B9D2 /* Beat5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D02AD9AB1E5A23D500F6B9D2 /* Beat5.mp3 */; };
+		D02AD9AE1E5A248F00F6B9D2 /* Beat4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D02AD9B01E5A248F00F6B9D2 /* Beat4.mp3 */; };
 		D03FFCD11E597B6E00A94C56 /* Beat1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D03FFCD31E597B6E00A94C56 /* Beat1.mp3 */; };
 		D03FFCD71E597B7C00A94C56 /* Beat3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D03FFCD91E597B7C00A94C56 /* Beat3.mp3 */; };
-		D03FFCDA1E597B8000A94C56 /* Beat4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D03FFCDC1E597B8000A94C56 /* Beat4.mp3 */; };
 		D03FFCE01E597B8700A94C56 /* Beat6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D03FFCE21E597B8700A94C56 /* Beat6.mp3 */; };
 		D03FFCE61E597B8E00A94C56 /* Beat8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D03FFCE81E597B8E00A94C56 /* Beat8.mp3 */; };
 		D03FFCEC1E597B9400A94C56 /* Beat10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D03FFCEE1E597B9400A94C56 /* Beat10.mp3 */; };
@@ -39,9 +39,9 @@
 		D02AD9A21E5A235400F6B9D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat7.mp3; sourceTree = "<group>"; };
 		D02AD9A51E5A235900F6B9D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat9.mp3; sourceTree = "<group>"; };
 		D02AD9AA1E5A23D500F6B9D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat5.mp3; sourceTree = "<group>"; };
+		D02AD9AF1E5A248F00F6B9D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat4.mp3; sourceTree = "<group>"; };
 		D03FFCD21E597B6E00A94C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat1.mp3; sourceTree = "<group>"; };
 		D03FFCD81E597B7C00A94C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat3.mp3; sourceTree = "<group>"; };
-		D03FFCDB1E597B8000A94C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat4.mp3; sourceTree = "<group>"; };
 		D03FFCE11E597B8700A94C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat6.mp3; sourceTree = "<group>"; };
 		D03FFCE71E597B8E00A94C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat8.mp3; sourceTree = "<group>"; };
 		D03FFCED1E597B9400A94C56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/Beat10.mp3; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				D03FFCD31E597B6E00A94C56 /* Beat1.mp3 */,
 				D02AD9A01E5A234C00F6B9D2 /* Beat2.mp3 */,
 				D03FFCD91E597B7C00A94C56 /* Beat3.mp3 */,
-				D03FFCDC1E597B8000A94C56 /* Beat4.mp3 */,
+				D02AD9B01E5A248F00F6B9D2 /* Beat4.mp3 */,
 				D02AD9AB1E5A23D500F6B9D2 /* Beat5.mp3 */,
 				D03FFCE21E597B8700A94C56 /* Beat6.mp3 */,
 				D02AD9A31E5A235400F6B9D2 /* Beat7.mp3 */,
@@ -201,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D02AD9AE1E5A248F00F6B9D2 /* Beat4.mp3 in Resources */,
 				D02AD9A91E5A23D500F6B9D2 /* Beat5.mp3 in Resources */,
 				D02AD9A41E5A235900F6B9D2 /* Beat9.mp3 in Resources */,
 				F577B3911CB81F840005E827 /* GameScene.sks in Resources */,
@@ -210,7 +211,6 @@
 				F577B39D1CB81F840005E827 /* LaunchScreen.storyboard in Resources */,
 				F577B39A1CB81F840005E827 /* Assets.xcassets in Resources */,
 				D02AD99E1E5A234C00F6B9D2 /* Beat2.mp3 in Resources */,
-				D03FFCDA1E597B8000A94C56 /* Beat4.mp3 in Resources */,
 				D03FFCF81E597BAC00A94C56 /* paddleBlip.wav in Resources */,
 				D03FFCE61E597B8E00A94C56 /* Beat8.mp3 in Resources */,
 				D03FFCEC1E597B9400A94C56 /* Beat10.mp3 in Resources */,
@@ -274,6 +274,14 @@
 			name = Beat5.mp3;
 			sourceTree = "<group>";
 		};
+		D02AD9B01E5A248F00F6B9D2 /* Beat4.mp3 */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D02AD9AF1E5A248F00F6B9D2 /* Base */,
+			);
+			name = Beat4.mp3;
+			sourceTree = "<group>";
+		};
 		D03FFCD31E597B6E00A94C56 /* Beat1.mp3 */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,15 +297,6 @@
 				D03FFCD81E597B7C00A94C56 /* Base */,
 			);
 			name = Beat3.mp3;
-			path = ../../../../Desktop/Beats;
-			sourceTree = "<group>";
-		};
-		D03FFCDC1E597B8000A94C56 /* Beat4.mp3 */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D03FFCDB1E597B8000A94C56 /* Base */,
-			);
-			name = Beat4.mp3;
 			path = ../../../../Desktop/Beats;
 			sourceTree = "<group>";
 		};
