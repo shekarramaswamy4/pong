@@ -231,7 +231,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
                     activityVC.completionWithItemsHandler = { (activityType, completed, items, error) in
                         
-                        guard completed else { print("User cancelled."); return }
+                        guard completed else {
+                            print("User cancelled.");
+                            self.resetScene()
+                            return
+                        }
                         
                         print("Completed With Activity Type: \(activityType)")
                         
