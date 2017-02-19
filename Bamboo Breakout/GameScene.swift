@@ -230,22 +230,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
                     activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
                     
-                    var vc: UIViewController = UIViewController()
-                    vc = self.view!.window!.rootViewController!
+                    //var vc: UIViewController = UIViewController()
+                    let vc = self.view!.window!.rootViewController!
                     
                     vc.present(activityVC, animated:true, completion: nil)
                 }
             }
-
-            let newScene = GameScene(fileNamed:"GameScene")
-            newScene!.scaleMode = .aspectFit
-            let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
-            self.view?.presentScene(newScene!, transition: reveal)
             
-            print("here")
-        
+            self.resetScene()
+
+
         default: break
         }
+    }
+    
+    
+    func resetScene() -> Void {
+        let newScene = GameScene(fileNamed:"GameScene")
+        newScene!.scaleMode = .aspectFit
+        let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+        self.view?.presentScene(newScene!, transition: reveal)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
