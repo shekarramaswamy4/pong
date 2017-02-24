@@ -21,6 +21,10 @@
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
+ 
+ 
+ * Author: Shekar Ramaswamy
+ * 3rd party images/audio were used but I was given permission to use commercially.
  */ 
 
 import SpriteKit
@@ -74,7 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let texture = SKTexture(imageNamed: textureName)
             
             var actionSequence:SKAction
-            if (isHighscore && score > 3) {
+            if (isHighscore && score > 4) {
                 let shareHighscore = childNode(withName: "shareHighscore") as! SKLabelNode
                 actionSequence = SKAction.sequence([SKAction.setTexture(texture),
                                                         SKAction.scale(to: 1.75, duration: 0.20),
@@ -172,23 +176,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     gameState.enter(WaitingForTap.self)
   }
     
-//    func shareIconTouched()
-//    {
-//        let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
-//        
-//        //add app store link
-//        let textToShare = "My highscore on Panda Pong is \(savedScore)! Can you beat that? Download the game here: www.test.com #PandaPong"
-//        
-//        let objectsToShare = [textToShare]
-//        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-//        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
-//        
-//        var vc: UIViewController = UIViewController()
-//        vc = self.view!.window!.rootViewController!
-//        
-//        vc.present(activityVC, animated:true, completion:nil)
-//    }
-    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch gameState.currentState {
@@ -222,9 +209,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 print("touched")
                 let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
+//                let linkAttributes = [
+//                    NSLinkAttributeName: NSURL(string: "https://itunes.apple.com/us/app/panda-paddle/id1207672815?ls=1&mt=8")!,
+//                    NSForegroundColorAttributeName: UIColor.blue
+//                ] as [String: Any]
+//                
+//                
+//                let attributedString = NSMutableAttributedString(string: "My highscore on Panda Paddle is \(savedScore)! Can you beat that?#PandaPaddle")
+//                
+//                attributedString.setAttributes(linkAttributes, range: NSMakeRange(16, 28))
+//                let textToShare = attributedString
                 
-                //add app store link
-                let textToShare = "My highscore on Panda Pong is \(savedScore)! Can you beat that? Download the game here: www.test.com #PandaPong"
+                let textToShare = "My highscore on Panda Paddle is \(savedScore)! Can you beat that?#PandaPaddle"
+                
+                //<a href-"https://itunes.apple.com/us/app/panda-paddle/id1207672815?ls=1&mt=8">Panda Paddle</a>
                 
                 let objectsToShare = [textToShare]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
@@ -340,13 +338,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scoreboard.text = String(describing: current!)
                 
                 //could change later
-                if (current == 2 || current == 10 || current == 20)
+                if (current == 2 || current == 10 || current == 20 || current == 50)
                 {
                     let curBall = childNode(withName: BallCategoryName) as! SKSpriteNode
                     let ball = curBall.copy() as! SKSpriteNode
                     ball.physicsBody?.restitution = 1
                     ball.physicsBody?.linearDamping = 0
-                    ball.physicsBody?.linearDamping = 0
+                    ball.physicsBody?.friction = 0
                     ball.physicsBody?.velocity = CGVector(dx: (ball.physicsBody?.velocity.dx.multiplied(by: -1.0))!, dy: (ball.physicsBody?.velocity.dy)!)
                     ball.position = CGPoint(x: frame.midX, y: frame.midY)
                     self.addChild(ball)

@@ -169,11 +169,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0800;
-				ORGANIZATIONNAME = "Razeware LLC.";
+				ORGANIZATIONNAME = "11703 Studios";
 				TargetAttributes = {
 					F577B38A1CB81F840005E827 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = WM4PV5V99W;
+						DevelopmentTeam = S3P5HRA85C;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -475,10 +475,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WM4PV5V99W;
+				DEVELOPMENT_TEAM = S3P5HRA85C;
 				INFOPLIST_FILE = "Bamboo Breakout/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shekar.Pong2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shekarramaswamy.Pong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -488,10 +488,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WM4PV5V99W;
+				DEVELOPMENT_TEAM = S3P5HRA85C;
 				INFOPLIST_FILE = "Bamboo Breakout/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shekar.Pong2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shekarramaswamy.Pong2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
