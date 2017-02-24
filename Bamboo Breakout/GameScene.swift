@@ -220,9 +220,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //                attributedString.setAttributes(linkAttributes, range: NSMakeRange(16, 28))
 //                let textToShare = attributedString
                 
-                let textToShare = "My highscore on Panda Paddle is \(savedScore)! Can you beat that?#PandaPaddle"
+                let textToShare = "My highscore on Panda Paddle is \(savedScore)! Can you beat that? Download here: https://goo.gl/BZcB16 #PandaPaddle"
                 
-                //<a href-"https://itunes.apple.com/us/app/panda-paddle/id1207672815?ls=1&mt=8">Panda Paddle</a>
                 
                 let objectsToShare = [textToShare]
                 let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
