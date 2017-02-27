@@ -29,6 +29,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 
 let BallCategoryName = "ball"
@@ -53,11 +54,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score:Int = 0
     var highestScore:Int = 0
     var isHighscore:Bool = false
+    var isOtherMusicPlaying = false
     
     var gameWon : Bool = false {
         didSet {
             //where game over sound is played
-            run(gameOverSound)
+            if (!isOtherMusicPlaying) {
+                run(gameOverSound)
+            }
             
             let gameOver = childNode(withName: GameMessageName) as! SKSpriteNode
             var textureName:String = ""
@@ -126,6 +130,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
 
     highscore.text = String(savedScore)
+    if (savedScore > 99) {
+        highscore.fontColor = UIColor.yellow
+    }
     
     let shareHighscore = childNode(withName: "shareHighscore") as! SKLabelNode
     shareHighscore.zPosition = -1
@@ -162,12 +169,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     gameMessage.setScale(0.0)
     addChild(gameMessage)
     
+    isOtherMusicPlaying = AVAudioSession.sharedInstance().isOtherAudioPlaying
+    
     //put background music here
-    let randomNum:UInt32 = arc4random_uniform(10) + 1
-    let audioName = "Beat" + String(randomNum) + ".mp3"
-    let backgroundMusic = SKAudioNode(fileNamed: audioName)
-    backgroundMusic.autoplayLooped = true
-    self.addChild(backgroundMusic)
+    if (!isOtherMusicPlaying) {
+        let randomNum:UInt32 = arc4random_uniform(10) + 1
+        let audioName = "Beat" + String(randomNum) + ".mp3"
+        let backgroundMusic = SKAudioNode(fileNamed: audioName)
+        backgroundMusic.autoplayLooped = true
+        self.addChild(backgroundMusic)
+    }
     
     let skView = self.view! as SKView
     skView.showsFPS = false
@@ -209,16 +220,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             {
                 print("touched")
                 let savedScore = UserDefaults.standard.value(forKey: "HighestScore") as! Int
-//                let linkAttributes = [
-//                    NSLinkAttributeName: NSURL(string: "https://itunes.apple.com/us/app/panda-paddle/id1207672815?ls=1&mt=8")!,
-//                    NSForegroundColorAttributeName: UIColor.blue
-//                ] as [String: Any]
-//                
-//                
-//                let attributedString = NSMutableAttributedString(string: "My highscore on Panda Paddle is \(savedScore)! Can you beat that?#PandaPaddle")
-//                
-//                attributedString.setAttributes(linkAttributes, range: NSMakeRange(16, 28))
-//                let textToShare = attributedString
                 
                 let textToShare = "My highscore on Panda Paddle is \(savedScore)! Can you beat that? Download here: https://goo.gl/BZcB16 #PandaPaddle"
                 
@@ -335,6 +336,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 var current = Int(scoreboard.text!)
                 current = current! + 1
                 scoreboard.text = String(describing: current!)
+                if (current! > 99) {
+                    scoreboard.fontColor = UIColor.yellow
+                }
                 
                 //could change later
                 if (current == 2 || current == 10 || current == 20 || current == 50)
